@@ -48,14 +48,15 @@ const Maker = ({ authService }) => {
   };
 
   useEffect(() => {
-    authService.onAuthChange(user => {
+    authService.onAuthChange((user) => {
       if (!user) {
         history.push('/');
       }
     });
   });
 
-  const addCard = card => {
+  const addCard = (card) => {
+    setCards((cards) => [...cards, card]);
     console.log(card);
   };
   return (
