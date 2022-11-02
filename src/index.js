@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.module.css';
 import App from './app';
@@ -10,7 +10,14 @@ import CardDatabase from './service/card_database';
 const authService = new AuthService();
 const cloudService = new CloudService();
 const cardDatabase = new CardDatabase();
-const FileInput = (props) => <ImageFileInput {...props} cloudService={cloudService} />;
+
+const FileInput = memo(
+  (
+    props, //
+  ) => (
+    <ImageFileInput {...props} cloudService={cloudService} /> //
+  ),
+); //
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

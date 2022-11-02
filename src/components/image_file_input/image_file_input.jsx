@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import styles from './image_file_input.module.css';
 
-const ImageFileInput = ({ cloudService, name, onFileChange }) => {
+const ImageFileInput = memo(({ cloudService, name, onFileChange }) => {
   const [loading, setLoading] = useState(false);
 
   const inputRef = useRef();
@@ -31,6 +31,6 @@ const ImageFileInput = ({ cloudService, name, onFileChange }) => {
       {loading && <div className={styles.loading}></div>}
     </div>
   );
-};
+});
 
 export default ImageFileInput;

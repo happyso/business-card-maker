@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from '../footer/footer';
 import Header from '../header/header';
@@ -11,9 +11,9 @@ const Maker = ({ FileInput, authService, cardDatabase }) => {
   const [cards, setCards] = useState({});
   const historyState = history?.location?.state;
   const [userId, setUserId] = useState(historyState && historyState.id);
-  const onLogout = () => {
+  const onLogout = useCallback(() => {
     authService.logout();
-  };
+  }, [authService]);
 
   useEffect(() => {
     if (!userId) {
