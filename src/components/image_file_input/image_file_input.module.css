@@ -1,0 +1,10 @@
+.container {
+  position: relative;
+}
+.input {
+  border: 0;
+}
+
+.button {
+  display: inline-block;
+}
