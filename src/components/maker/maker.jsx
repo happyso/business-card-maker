@@ -11,41 +11,6 @@ const Maker = ({ FileInput, authService, cardDatabase }) => {
   const [cards, setCards] = useState({});
   const historyState = history?.location?.state;
   const [userId, setUserId] = useState(historyState && historyState.id);
-
-  /*  1: {
-      id: '1',
-      name: 'Ellie',
-      company: 'Samsung',
-      theme: 'dark',
-      title: 'Software Engineer',
-      email: 'ellie@gmail.com',
-      message: 'go for it',
-      fileName: null,
-      fileURL: null,
-    },
-    2: {
-      id: '2',
-      name: 'Ellie2',
-      company: 'Samsung',
-      theme: 'light',
-      title: 'Software Engineer',
-      email: 'ellie@gmail.com',
-      message: 'go for it',
-      fileName: 'ellie',
-      fileURL: 'https://res.cloudinary.com/djmhpv5wg/image/upload/v1666480944/cld-sample-4.jpg',
-    },
-    3: {
-      id: '3',
-      name: 'Ellie3',
-      company: 'Samsung',
-      theme: 'colorful',
-      title: 'Software Engineer',
-      email: 'ellie@gmail.com',
-      message: 'go for it',
-      fileName: 'cld-sample',
-      fileURL: 'https://res.cloudinary.com/djmhpv5wg/image/upload/v1666480943/cld-sample.jpg',
-    },*/
-
   const onLogout = () => {
     authService.logout();
   };
@@ -60,18 +25,17 @@ const Maker = ({ FileInput, authService, cardDatabase }) => {
     return () => {
       stopSync();
     };
-  }, [userId]);
+  }, [userId, cardDatabase]);
 
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
         setUserId(user.uid);
-        console.log(userId);
       } else {
         history.push('/');
       }
     });
-  });
+  }, [userId, history, authService]);
 
   const createOrUpdateCard = (card) => {
     setCards((cards) => {
