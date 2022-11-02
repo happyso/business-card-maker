@@ -17,7 +17,7 @@ const CardAddForm = ({ onAdd }) => {
 
     const name = nameRef.current.value || '';
     const company = companyRef.current.value || '';
-    const theme = themeRef.current.value || '';
+    const theme = themeRef.current.value;
     const title = titleRef.current.value || '';
     const email = emailRef.current.value || '';
     const message = messageRef.current.value || '';
