@@ -37,14 +37,17 @@ const Maker = ({ FileInput, authService, cardDatabase }) => {
     });
   }, [userId, history, authService]);
 
-  const createOrUpdateCard = (card) => {
-    setCards((cards) => {
-      const updated = { ...cards };
-      updated[card.id] = card;
-      return updated;
-    });
-    cardDatabase.saveCard(userId, card);
-  };
+  const createOrUpdateCard = useCallback(
+    (card) => {
+      setCards((cards) => {
+        const updated = { ...cards };
+        updated[card.id] = card;
+        return updated;
+      });
+      cardDatabase.saveCard(userId, card);
+    },
+    [userId, cardDatabase],
+  );
 
   const deleteCard = (card) => {
     setCards((cards) => {
