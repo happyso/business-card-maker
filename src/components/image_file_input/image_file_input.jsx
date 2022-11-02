@@ -1,5 +1,4 @@
-import React from 'react';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import styles from './image_file_input.module.css';
 
 const ImageFileInput = ({ cloudService, name, onFileChange }) => {
@@ -8,6 +7,7 @@ const ImageFileInput = ({ cloudService, name, onFileChange }) => {
     event.preventDefault();
     inputRef.current.click();
   };
+
   const onChange = async (event) => {
     const uploaded = await cloudService.uploadImage(event.target.files[0]);
     onFileChange({
@@ -18,8 +18,8 @@ const ImageFileInput = ({ cloudService, name, onFileChange }) => {
 
   return (
     <div className={styles.container}>
-      <input type="file" ref={inputRef} className={styles.input} accept="image/*" name="file" onChange={onChange} />
-      <button onClick={onButtonClick} className={styles.button}>
+      <input ref={inputRef} className={styles.input} type="file" accept="image/*" name="file" onChange={onChange} />
+      <button className={styles.button} onClick={onButtonClick}>
         {name || 'No file'}
       </button>
     </div>
